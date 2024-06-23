@@ -6,18 +6,23 @@ function insertSelectedText(textId, eventId){
     deleteLastOptionsFieldIfExists();
 }
 
-function initializeOptionsField(event){
-    let eventTextField = document.getElementById(event.id);
-    let optionsField = document.createElement("div");
-    optionsField.className = "optionsField";
-    optionsField.id = "child of " + event.id;
+function styleOptionsField(optionsField, event){
+    let boundingClient = document.getElementById(event.id).getBoundingClientRect();
+
     optionsField.style.backgroundColor = "blue";
     optionsField.style.zIndex = 5;
     optionsField.style.position = "absolute";
 
-    let boundingClient = eventTextField.getBoundingClientRect();
     optionsField.style.top = (boundingClient.top + boundingClient.height) + "px";
     optionsField.style.left = boundingClient.left + "px";
+}
+
+function initializeOptionsField(eventTextField){
+    let optionsField = document.createElement("div");
+    optionsField.className = "optionsField";
+    optionsField.id = "child of " + eventTextField.id;
+    
+    styleOptionsField(optionsField, eventTextField)
 
     return optionsField;
 }
@@ -43,8 +48,6 @@ function deleteLastOptionsFieldIfExists(){
     if(lastOptionsField.length !== 0){
         lastOptionsField[0].parentElement.removeChild(lastOptionsField[0]);
     }
-
-    return
 }
 
 function createOptionsField(id){
