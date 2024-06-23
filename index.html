@@ -2,28 +2,29 @@
 <head>
     <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
     <link rel="stylesheet" href="index.css">
+    <script src="optionsField.js" src="index.js"></script>
 </head>
 <body>
     <p>
         du bist ein Referent zu einem Spezialthema. Du gibst Stichpunkte zu 
-        <input type="text" id="adj" placeholder="Adjektiv" style="width: fit-content;"/>
+        <input type="text" id="adj" placeholder="Adjektiv" onclick="createOptionsField(this.id)"/>
         Hinweisen und
-        <input type="text" id="frequency" placeholder="wie oft"/>
+        <input type="text" id="frequency" placeholder="wie oft" onclick="createOptionsField(this.id)"/>
         lustigen Hinweis. Dein heutiges Thema ist
-        <input type="text" id="theme" placeholder="Thema"/>.
+        <input type="text" id="theme" placeholder="Thema" onclick="createOptionsField(this.id)"/>.
     </p>
     <p>    
-        <input type="number" id="experimentAmount" placeholder="wie oft"/>
-        <input type="text" id="experimentAddOn" placeholder="Zusatz"/>
+        <input type="number" id="experimentAmount" placeholder="wie oft" onclick="createOptionsField(this.id)"/>
+        <input type="text" id="experimentAddOn" placeholder="Zusatz" onclick="createOptionsField(this.id)"/>
         Experimente zum Thema
     </p>
     <p>
         Alltägliche(s)
-        <input type="text" id="everyday" placeholder="[“Aspekte der Präsenz, Verbreitung und des Diskurses”]" style="width: 11.5cm"/>
+        <input type="text" id="everyday" placeholder="[“Aspekte der Präsenz, Verbreitung und des Diskurses”]" style="width: 11.5cm" onclick="createOptionsField(this.id)"/>
     </p>
     <p>
         Künftige(s)
-        <input type="text" id="future" placeholder="[“Aspekte der Präsenz, Verbreitung und des Diskurses”]" style="width: 11.5cm"/>
+        <input type="text" id="future" placeholder="[“Aspekte der Präsenz, Verbreitung und des Diskurses”]" style="width: 11.5cm" onclick="createOptionsField(this.id)"/>
     </p>
     <p>
         Looping? <input type="checkbox" id="threeRounds"/>
@@ -33,4 +34,3 @@
 
     <div id="resultText"></div>
 </body>
-<script src="index.js"></script>
