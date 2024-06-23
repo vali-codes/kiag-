@@ -1,15 +1,18 @@
+let lastOptionsTargetId = null;
+
 function insertSelectedText(textId, eventId){
     let textField = document.getElementById(textId);
     let eventTextField = document.getElementById(eventId);
 
     eventTextField.value = textField.textContent;
     deleteLastOptionsFieldIfExists();
+    lastOptionsTargetId = null;
 }
 
 function styleOptionsField(optionsField, event){
     let boundingClient = document.getElementById(event.id).getBoundingClientRect();
 
-    optionsField.style.backgroundColor = "blue";
+    optionsField.style.backgroundColor = "grey";
     optionsField.style.zIndex = 5;
     optionsField.style.position = "absolute";
 
@@ -23,41 +26,50 @@ function initializeOptionsField(eventTextField){
     optionsField.id = "child of " + eventTextField.id;
     
     styleOptionsField(optionsField, eventTextField)
-
     return optionsField;
 }
 
 function insertOptions(optionsField, eventTextField){
-    for(let i = 0; i < 2; i++){
+    optionTexts[typeOfInput.indexOf(eventTextField.id)].forEach((optionText) => {
         let option = document.createElement("p");
-        option.textContent = "spannend";
+        option.textContent = optionText;
 
-        option.id = "selectText " + i;
+        option.id = optionText;
         option.style.width = eventTextField.offsetWidth + "px";
         option.style.height = eventTextField.offsetHeight + "px";
         option.style.margin = "0px"
-        option.onclick = () => { insertSelectedText("selectText " + i, eventTextField.id)};
+        option.onclick = () => { insertSelectedText(optionText, eventTextField.id)};
 
         optionsField.appendChild(option);
-    }
+    })
 }
 
 function deleteLastOptionsFieldIfExists(){
-    let lastOptionsField = document.getElementsByClassName("optionsField");
+    if(lastOptionsTargetId !== null){
+        let lastOptionsField = document.getElementsByClassName("optionsField");
 
-    if(lastOptionsField.length !== 0){
         lastOptionsField[0].parentElement.removeChild(lastOptionsField[0]);
     }
 }
 
-function createOptionsField(id){
-    let eventTextField = document.getElementById(id);
+function isNewInputField(target){
+    return target.nodeName.toLowerCase() === "input" && lastOptionsTargetId !== target.id;
+}
 
+function createOptionsField(target){
     deleteLastOptionsFieldIfExists();
 
-    let optionsField = initializeOptionsField(eventTextField);
+    if(isNewInputField(target)){
+        lastOptionsTargetId = target.id;
 
-    insertOptions(optionsField, eventTextField);
+        let eventTextField = document.getElementById(target.id);
 
-    eventTextField.parentElement.appendChild(optionsField);
+        let optionsField = initializeOptionsField(eventTextField);
+
+        insertOptions(optionsField, eventTextField);
+
+        eventTextField.parentElement.appendChild(optionsField);
+    }else{
+        lastOptionsTargetId = null;
+    }
 }

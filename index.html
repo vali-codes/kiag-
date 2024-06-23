@@ -4,28 +4,40 @@
     <link rel="stylesheet" href="index.css">
     <script src="optionsField.js" src="index.js"></script>
     <script src="index.js"></script>
+    <script>
+        const typeOfInput = ["theme", "adjective", "frequency", "experimentAmount", "experimentAddOn", "everyday", "future", "threeRounds"];
+        const optionTexts = [["lol1", "lol2", "lol3"],
+                            ["spannende", "interessante"],
+                            ["jede Folie einen", "keinen"],
+                            [],
+                            ["einfache", "interessante"],
+                            ["Probleme", "Anwendungen", "Diskussionen", "Erwähnungen"],
+                            ["Probleme", "Anwendungen", "Diskussionen", "Erwähnungen"],
+                            []]
+        addEventListener("click", (event) => {createOptionsField(event.target)});
+    </script>
 </head>
 <body>
     <p>
         du bist ein Referent zu einem Spezialthema. Du gibst Stichpunkte zu 
-        <input type="text" id="adj" placeholder="Adjektiv" onclick="createOptionsField(this.id)"/>
+        <input type="text" id="adjective" placeholder="Adjektiv"/>
         Hinweisen und
-        <input type="text" id="frequency" placeholder="wie oft" onclick="createOptionsField(this.id)"/>
+        <input type="text" id="frequency" placeholder="wie oft"/>
         lustigen Hinweis. Dein heutiges Thema ist
-        <input type="text" id="theme" placeholder="Thema" onclick="createOptionsField(this.id)"/>.
+        <input type="text" id="theme" placeholder="Thema"/>.
     </p>
     <p>    
-        <input type="number" id="experimentAmount" placeholder="wie oft" onclick="createOptionsField(this.id)"/>
-        <input type="text" id="experimentAddOn" placeholder="Zusatz" onclick="createOptionsField(this.id)"/>
+        <input type="number" id="experimentAmount" placeholder="wie oft"/>
+        <input type="text" id="experimentAddOn" placeholder="Zusatz"/>
         Experimente zum Thema
     </p>
     <p>
         Alltägliche(s)
-        <input type="text" id="everyday" placeholder="[“Aspekte der Präsenz, Verbreitung und des Diskurses”]" style="width: 11.5cm" onclick="createOptionsField(this.id)"/>
+        <input type="text" id="everyday" placeholder="[“Aspekte der Präsenz, Verbreitung und des Diskurses”]" style="width: 11.5cm"/>
     </p>
     <p>
         Künftige(s)
-        <input type="text" id="future" placeholder="[“Aspekte der Präsenz, Verbreitung und des Diskurses”]" style="width: 11.5cm" onclick="createOptionsField(this.id)"/>
+        <input type="text" id="future" placeholder="[“Aspekte der Präsenz, Verbreitung und des Diskurses”]" style="width: 11.5cm"/>
     </p>
     <p>
         Looping? <input type="checkbox" id="threeRounds"/>

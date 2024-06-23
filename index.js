@@ -8,11 +8,11 @@ let future = "";
 let threeRounds = "";
 
 const con_Out = ["du bist ein Referent zu einem Spezialthema. Du gibst Stichpunkte zu [Adjektiv(e)] Hinweisen und [Häufigkeit] lustigen Hinweis. Dein heutiges Thema ist [Thema].", "Erstelle eine Präsentation mit folgenden Folien:", "1.	 Begriffsdefinition [Thema]", "2.	 Eigenschaften von [Thema]", "3.	 [Häufigkeit und Art] Experimente zum Thema", "4.	 Alltägliche(s) [“Aspekte der Präsenz, Verbreitung und des Diskurses”] von [Thema]", "5.	 Künftige(s) [“Aspekte der Präsenz, Verbreitung und des Diskurses”]", "6.	 Mögliche Probleme", "7.	 Schlussfolie die wichtigsten Stichworte", "Mache drei Durchläufe und gleiche die einander ab und gebe das aus", "Fasse danach jeden Punkt in einer Folie mit höchstens 5 Worten zusammen und gebe das aus", "führe danach die Punkte sehr ausführlich aus und gebe das aus", "führe danach die Punkte in Karteikartenformat aus und gebe das aus"];
-let output = [" ", " "];
+let output = [" "];
 
 function getAtributes(){
     theme = document.getElementById("theme").value;
-    adjective = document.getElementById("adj").value;
+    adjective = document.getElementById("adjective").value;
     frequency = document.getElementById("frequency").value;
     experimentAmount = parseInt(document.getElementById("experimentAmount").value);
     experimentAddOn = document.getElementById("experimentAddOn").value;
