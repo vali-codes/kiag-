@@ -2,20 +2,22 @@ function insertSelectedText(textId, eventId){
     let textField = document.getElementById(textId);
     let eventTextField = document.getElementById(eventId);
 
-    console.log(textField.textContent)
     eventTextField.value = textField.textContent;
-    console.log(eventTextField.value)
+    deleteLastOptionsFieldIfExists();
 }
 
-function initializeOptionsField(eventTextField){
+function initializeOptionsField(event){
+    let eventTextField = document.getElementById(event.id);
     let optionsField = document.createElement("div");
     optionsField.className = "optionsField";
+    optionsField.id = "child of " + event.id;
     optionsField.style.backgroundColor = "blue";
     optionsField.style.zIndex = 5;
     optionsField.style.position = "absolute";
 
-    optionsField.style.marginTop = eventTextField.style.marginTop;
-    optionsField.style.marginLeft = eventTextField.marginLeft;
+    let boundingClient = eventTextField.getBoundingClientRect();
+    optionsField.style.top = (boundingClient.top + boundingClient.height) + "px";
+    optionsField.style.left = boundingClient.left + "px";
 
     return optionsField;
 }
@@ -26,25 +28,29 @@ function insertOptions(optionsField, eventTextField){
         option.textContent = "spannend";
 
         option.id = "selectText " + i;
-        option.style.minWidth = eventTextField.style.width;
-        option.style.maxHeight = eventTextField.style.height;
+        option.style.width = eventTextField.offsetWidth + "px";
+        option.style.height = eventTextField.offsetHeight + "px";
+        option.style.margin = "0px"
         option.onclick = () => { insertSelectedText("selectText " + i, eventTextField.id)};
 
         optionsField.appendChild(option);
     }
 }
 
-function deleteLastOptionsField(){
+function deleteLastOptionsFieldIfExists(){
     let lastOptionsField = document.getElementsByClassName("optionsField");
+
     if(lastOptionsField.length !== 0){
         lastOptionsField[0].parentElement.removeChild(lastOptionsField[0]);
     }
+
+    return
 }
 
 function createOptionsField(id){
     let eventTextField = document.getElementById(id);
 
-    deleteLastOptionsField();
+    deleteLastOptionsFieldIfExists();
 
     let optionsField = initializeOptionsField(eventTextField);
 
