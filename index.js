@@ -11,16 +11,14 @@ const con_Out = ["du bist ein Referent zu einem Spezialthema. Du gibst Stichpunk
 let output = [" "];
 
 function getAtributes(){
-    theme = document.getElementById("theme").value;
-    adjective = document.getElementById("adjective").value;
-    frequency = document.getElementById("frequency").value;
-    experimentAmount = parseInt(document.getElementById("experimentAmount").value);
-    experimentAddOn = document.getElementById("experimentAddOn").value;
-    everyday = document.getElementById("everyday").value;
-    future = document.getElementById("future").value;
-    threeRounds = document.getElementById("threeRounds").checked;
-
-    console.log(threeRounds)
+    theme = document.getElementById(typeOfInput[0]).value;
+    adjective = document.getElementById(typeOfInput[1]).value;
+    frequency = document.getElementById(typeOfInput[2]).value;
+    experimentAmount = parseInt(document.getElementById(typeOfInput[3]).value);
+    experimentAddOn = document.getElementById(typeOfInput[4]).value;
+    everyday = document.getElementById(typeOfInput[5]).value;
+    future = document.getElementById(typeOfInput[6]).value;
+    threeRounds = document.getElementById(typeOfInput[7]).checked;
     
     if(isNaN(experimentAmount)) return false;
     return true;
