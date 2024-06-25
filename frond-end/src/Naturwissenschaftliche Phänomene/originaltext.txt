@@ -1,0 +1,9 @@
+du bist ein Referent zu einem Spezialthema. Du gibst Stichpunkte zu [Adjektiv(e)] Hinweisen und [Häufigkeit] lustigen Hinweis. Dein heutiges Thema ist [Thema].
+Erstelle eine Präsentation mit folgenden Folien:
+1.	 Begriffsdefinition [Thema]
+2.	 Eigenschaften von [Thema]
+3.	 [Häufigkeit und Art] Experimente zum Thema
+4.	 Alltägliche(s) [“Aspekte der Präsenz, Verbreitung und des Diskurses”] von [Thema]
+5.	 Künftige(s) [“Aspekte der Präsenz, Verbreitung und des Diskurses”]
+6.	 Mögliche Probleme
+7.	 Schlussfolie die wichtigsten Stichworte

@@ -7,8 +7,9 @@ let everyday = "";
 let future = "";
 let threeRounds = "";
 
-const con_Out = ["du bist ein Referent zu einem Spezialthema. Du gibst Stichpunkte zu [Adjektiv(e)] Hinweisen und [Häufigkeit] lustigen Hinweis. Dein heutiges Thema ist [Thema].", "Erstelle eine Präsentation mit folgenden Folien:", "1.	 Begriffsdefinition [Thema]", "2.	 Eigenschaften von [Thema]", "3.	 [Häufigkeit und Art] Experimente zum Thema", "4.	 Alltägliche(s) [“Aspekte der Präsenz, Verbreitung und des Diskurses”] von [Thema]", "5.	 Künftige(s) [“Aspekte der Präsenz, Verbreitung und des Diskurses”]", "6.	 Mögliche Probleme", "7.	 Schlussfolie die wichtigsten Stichworte", "Mache drei Durchläufe und gleiche die einander ab und gebe das aus", "Fasse danach jeden Punkt in einer Folie mit höchstens 5 Worten zusammen und gebe das aus", "führe danach die Punkte sehr ausführlich aus und gebe das aus", "führe danach die Punkte in Karteikartenformat aus und gebe das aus"];
+const con_Out = []; // read out of file
 let output = [" "];
+let index = 0;
 
 function getAtributes(){
     theme = document.getElementById(typeOfInput[0]).value;
@@ -50,10 +51,6 @@ function replaceLines(){
     }
 }
 
-function appendToParent(parent, text){
-    appendToParent(parent, text, "")
-}
-
 function appendToParent(parent, text, className){
     let line = document.createElement("p");
     line.textContent = text;
@@ -73,15 +70,35 @@ function addToParent(){
             let tmpResult = "it may be better to copy the part above first and, after the chatbot generated its response, then copy and paste this" + "\n"
             appendToParent(resultText, tmpResult, "insert")
         }
-        appendToParent(resultText, result)
+        appendToParent(resultText, result, "")
     }
 }
 
+function getFullText(){
+
+}
+
+function getShowedText(){
+    const originalText = require("fs");
+    FileSystem.readFile(".../Naturwissenschaftliche Phänomene/showedText.txt", (err, inputD) => {
+        if (err) throw err;
+           return inputD.toString();
+     })
+}
+
+function createGui(i){
+    index = i;
+    let root = document.getElementById("showedForm");
+    let text = getShowedText();
+    console.log(text);
+}
+
 function getText(){
-    output = JSON.parse(JSON.stringify(con_Out));
+    output = getFullText();
+    /*
     if(getAtributes()){
         replaceLines();
 
         addToParent();
-    }
+    }*/
 }
